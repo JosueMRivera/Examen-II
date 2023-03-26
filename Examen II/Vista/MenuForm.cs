@@ -23,5 +23,12 @@ namespace Vista
             ticketsForm.MdiParent = this;
             ticketsForm.Show();
         }
+
+        private void ConsultarTickettoolStripButton_Click(object sender, EventArgs e)
+        {
+            BuscarTicketForm buscarTicket  = new BuscarTicketForm();
+            buscarTicket.MdiParent = this;
+            buscarTicket.Show();
+        }
     }
 }

@@ -44,7 +44,7 @@ namespace Vista
                 aparatotxt.Text = AparatocomboBox.Text;
                 soportetxt.Text = SoportecomboBox.Text;
                 SoportecomboBox.Items.Clear();
-                string[] Soporte = new string[] { "Instalación y Configuración de Software y Hardware", "Actualización de Software", "Servicio y Reparación", "Configuración y Mantenimiento de Redes", "Soporte de Seguridad", "Mantenimiento preventivo" };
+                string[] Soporte = new string[] { "Instalación y Configuración de Software", "Instalación y Configuración de Hardware", "Actualización de Software", "Servicio y Reparación", "Soporte de Seguridad", "Mantenimiento preventivo" };
                 SoportecomboBox.Items.AddRange(Soporte);
             }
             else
@@ -135,9 +135,11 @@ namespace Vista
 
             if (inserto)
             {
-                LimpiarControles();
                 Identidadtxt.Focus();
                 MessageBox.Show("Factura Registrada Correctamente");
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+                LimpiarControles();
             }
             else
             {
@@ -190,6 +192,51 @@ namespace Vista
         private void Cancelarbt_Click(object sender, EventArgs e)
         {
             LimpiarControles();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            try
+            {
+                string linea = "--------------------------------------------------------------------------------------------------------------------------------------------";
+                int ydetalles = 250;
+                Bitmap bitmap = Properties.Resources.encabezado;
+                Image image = bitmap;
+                e.Graphics.DrawImage(image, 10, 10);
+
+                e.Graphics.DrawString("Cliente: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(10, 200));
+                e.Graphics.DrawString(miCliente.Nombre, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(80, 200));
+
+                e.Graphics.DrawString("Fecha: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(550, 200));
+                e.Graphics.DrawString(FechadateTimePicker.Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(610, 200));
+
+                e.Graphics.DrawString(linea, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 230));
+
+                e.Graphics.DrawString("TipoSoporte", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(10, ydetalles));
+                e.Graphics.DrawString("Descripcion Respuesta", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(200, ydetalles));
+                e.Graphics.DrawString("Precio", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(700, ydetalles));
+
+                foreach (DetalleTicket item in listaDetalles)
+                {
+                    ydetalles = ydetalles + 25;
+                    e.Graphics.DrawString(item.TipoSoporte, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, ydetalles));
+                    e.Graphics.DrawString(item.DescripcionRespuesta.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(200, ydetalles));
+                    e.Graphics.DrawString(item.Precio.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles));
+                }
+                e.Graphics.DrawString(linea, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, ydetalles + 20));
+
+                e.Graphics.DrawString("Sub Total: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(600, ydetalles + 50));
+                e.Graphics.DrawString(subTotal.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles + 50));
+                e.Graphics.DrawString("ISV: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(653, ydetalles + 75));
+                e.Graphics.DrawString(isv.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles + 75));
+                e.Graphics.DrawString("Descuento: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(591, ydetalles + 100));
+                e.Graphics.DrawString(descuento.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles + 100));
+                e.Graphics.DrawString("Total: ", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(640, ydetalles + 125));
+                e.Graphics.DrawString(totalAPagar.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles + 125));
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

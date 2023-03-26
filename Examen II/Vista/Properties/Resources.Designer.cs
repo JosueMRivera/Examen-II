@@ -63,6 +63,16 @@ namespace Vista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boleto {
+            get {
+                object obj = ResourceManager.GetObject("boleto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buscar_cliente {
             get {
                 object obj = ResourceManager.GetObject("buscar cliente", resourceCulture);
@@ -86,6 +96,16 @@ namespace Vista.Properties {
         internal static System.Drawing.Bitmap comprobado {
             get {
                 object obj = ResourceManager.GetObject("comprobado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap encabezado {
+            get {
+                object obj = ResourceManager.GetObject("encabezado", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

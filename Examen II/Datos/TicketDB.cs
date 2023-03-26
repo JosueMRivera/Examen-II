@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,5 +76,56 @@ namespace Datos
             }
             return inserto;
         }
+
+        public DataTable DevolverTicket()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append("SELECT * FROM ticket ");
+                using (MySqlConnection _Conexion = new MySqlConnection(cadena))
+                {
+                    _Conexion.Open();
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _Conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        dt.Load(dr);
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+
+            return dt;
+        }
+
+        public DataTable DevolverTicketsPorIdentidad(string identidad)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" SELECT * FROM ticket WHERE IdentidadCliente LIKE '%" + identidad + "%'");
+                using (MySqlConnection _Conexion = new MySqlConnection(cadena))
+                {
+                    _Conexion.Open();
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _Conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        dt.Load(dr);
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+
+            return dt;
+        }
+
     }
 }
