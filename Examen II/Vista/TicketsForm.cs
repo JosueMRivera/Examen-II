@@ -156,8 +156,7 @@ namespace Vista
             Nombreclientetxt.Clear();
             descripcionsolicitudtxt.Clear();
             descripcionrespuestatxt.Clear();
-            AparatocomboBox = null;
-            SoportecomboBox = null;
+            SoportecomboBox.Items.Clear();
             DetalleTicketDGV.DataSource = null;
             subTotal = 0;
             subtotaltxt.Clear();
@@ -213,14 +212,14 @@ namespace Vista
                 e.Graphics.DrawString(linea, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 230));
 
                 e.Graphics.DrawString("TipoSoporte", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(10, ydetalles));
-                e.Graphics.DrawString("Descripcion Respuesta", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(200, ydetalles));
+                e.Graphics.DrawString("Descripcion Respuesta", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(350, ydetalles));
                 e.Graphics.DrawString("Precio", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(700, ydetalles));
 
                 foreach (DetalleTicket item in listaDetalles)
                 {
                     ydetalles = ydetalles + 25;
                     e.Graphics.DrawString(item.TipoSoporte, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, ydetalles));
-                    e.Graphics.DrawString(item.DescripcionRespuesta.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(200, ydetalles));
+                    e.Graphics.DrawString(item.DescripcionRespuesta.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(350, ydetalles));
                     e.Graphics.DrawString(item.Precio.ToString("N2"), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(700, ydetalles));
                 }
                 e.Graphics.DrawString(linea, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, ydetalles + 20));

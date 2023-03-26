@@ -32,8 +32,8 @@ namespace Vista
             this.ribbonControlAdv1 = new Syncfusion.Windows.Forms.Tools.RibbonControlAdv();
             this.toolStripTabItem1 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
             this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
-            this.toolStripEx2 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.NuevoTicketstoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripEx2 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.ConsultarTickettoolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).BeginInit();
             this.ribbonControlAdv1.SuspendLayout();
@@ -86,7 +86,7 @@ namespace Vista
             this.toolStripTabItem1.Panel.TabIndex = 2;
             this.toolStripTabItem1.Panel.Text = "Tickets";
             this.toolStripTabItem1.Position = 0;
-            this.toolStripTabItem1.Size = new System.Drawing.Size(47, 19);
+            this.toolStripTabItem1.Size = new System.Drawing.Size(57, 30);
             this.toolStripTabItem1.Tag = "1";
             this.toolStripTabItem1.Text = "Tickets";
             // 
@@ -108,6 +108,19 @@ namespace Vista
             this.toolStripEx1.Size = new System.Drawing.Size(118, 79);
             this.toolStripEx1.TabIndex = 0;
             // 
+            // NuevoTicketstoolStripButton
+            // 
+            this.NuevoTicketstoolStripButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NuevoTicketstoolStripButton.Image = global::Vista.Properties.Resources.Tickets;
+            this.NuevoTicketstoolStripButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NuevoTicketstoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.NuevoTicketstoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NuevoTicketstoolStripButton.Name = "NuevoTicketstoolStripButton";
+            this.NuevoTicketstoolStripButton.Size = new System.Drawing.Size(86, 60);
+            this.NuevoTicketstoolStripButton.Text = "Nuevo Ticket";
+            this.NuevoTicketstoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.NuevoTicketstoolStripButton.Click += new System.EventHandler(this.NuevoTicketstoolStripButton_Click);
+            // 
             // toolStripEx2
             // 
             this.toolStripEx2.Dock = System.Windows.Forms.DockStyle.None;
@@ -122,21 +135,8 @@ namespace Vista
             this.toolStripEx2.Office12Mode = false;
             this.toolStripEx2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.toolStripEx2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx2.Size = new System.Drawing.Size(146, 79);
+            this.toolStripEx2.Size = new System.Drawing.Size(115, 79);
             this.toolStripEx2.TabIndex = 1;
-            // 
-            // NuevoTicketstoolStripButton
-            // 
-            this.NuevoTicketstoolStripButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NuevoTicketstoolStripButton.Image = global::Vista.Properties.Resources.Tickets;
-            this.NuevoTicketstoolStripButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.NuevoTicketstoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.NuevoTicketstoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NuevoTicketstoolStripButton.Name = "NuevoTicketstoolStripButton";
-            this.NuevoTicketstoolStripButton.Size = new System.Drawing.Size(86, 60);
-            this.NuevoTicketstoolStripButton.Text = "Nuevo Ticket";
-            this.NuevoTicketstoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.NuevoTicketstoolStripButton.Click += new System.EventHandler(this.NuevoTicketstoolStripButton_Click);
             // 
             // ConsultarTickettoolStripButton
             // 
